@@ -116,3 +116,28 @@ ggplot(data = mtcars, aes(x = mpg, y = hp)) + geom_point()
 
 # select and copy to clipboard above (what you want to use a reporducible example) then type "reprex()" in the console and run
 ```
+
+Write a for loop, where, starting with the vector: c(2,4,6,8,10,12), you add a value and the one that immediately precedes it, returning a new vector with those sums.
+
+```{r}
+a <- c(2, 4, 6, 8, 10, 12)
+
+b <- vector(mode = "numeric", length = length(a) - 1)
+# b <- c() # this works, but the vector has to grow after each iteration and takes too much processing power if you are running millions of iterations for ex. Better to establish a length and then just replace values.
+
+for (i in 2:length(a)) {
+  new = a[i] + a[i-1]
+  b[i-1] <- new
+}
+```
+
+```{r}
+ggplot(data = trees, aes(x = Height, y = Volume)) +
+  geom_point() +
+  theme(title = element_text(size = 18, color = "purple"),
+        plot.background = element_rect(fill = "black"),
+        panel.background = element_rect(fill = "orange"),
+        axis.title.x = element_text(color = "green"),
+        panel.grid = element_line(color = "red"),
+        panel.grid.minor = element_line(color = "yellow"))
+```
